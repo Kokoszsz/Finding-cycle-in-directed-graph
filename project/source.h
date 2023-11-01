@@ -1,10 +1,10 @@
 #include <unordered_map>
 #include <iostream>
 
-extern std::unordered_map<int, std::vector<int>> MY_MAP;
-extern std::vector<std::vector<int>> DISCOVERED_CYCLES;
+using NodeMap = std::unordered_map<int, std::vector<int>>;
+using DiscoveredCycles = std::vector<std::vector<int>>;
 
-std::unordered_map<int, std::vector<int>> adv_tokenizer(std::string s, std::string del, std::string del_2);
-void find_cycle(int start_node, int cur_node, std::vector<int> visited);
-std::string get_data(std::string filename);
-void save_data(std::string outputFileName);
+NodeMap create_map(std::string conection_list);
+void find_cycle(const int start_node, const int cur_node, std::vector<int> visited, NodeMap& MY_MAP, DiscoveredCycles& DISCOVERED_CYCLES);
+std::string get_data(const std::string filename);
+void save_data(std::string outputFileName, const DiscoveredCycles& DISCOVERED_CYCLES);

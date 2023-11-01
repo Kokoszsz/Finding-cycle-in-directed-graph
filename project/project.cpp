@@ -1,10 +1,17 @@
 ﻿#include "source.h"
 
+
+// main function
 int main(int argc, char* argv[]) {
 
 
     std::string inputFileName;
     std::string outputFileName;
+
+    NodeMap MY_MAP;
+    DiscoveredCycles DISCOVERED_CYCLES;
+
+
     for (int i = 1; i < argc; i++) {
         if (std::string(argv[i]) == "-g") {
             if (i + 1 < argc) {
@@ -35,10 +42,10 @@ int main(int argc, char* argv[]) {
     std::string edges;
     edges = get_data(inputFileName);
     edges += ',';
-    std::cout << edges;
+    std::cout << edges << std::endl;
 
 
-    MY_MAP = adv_tokenizer(edges, "," , "->");
+    MY_MAP = create_map(edges);
 
 
     //for (const auto& entry : d) {
@@ -52,11 +59,10 @@ int main(int argc, char* argv[]) {
 
     std::vector<int> visited;
     for (const auto& entry : MY_MAP) {
-        find_cycle(entry.first, entry.first, visited);
+        find_cycle(entry.first, entry.first, visited, MY_MAP, DISCOVERED_CYCLES);
         std::vector<int> nth;
         MY_MAP[entry.first] = nth;
     }
-
 
     for (std::vector<int> cycle : DISCOVERED_CYCLES) {
         for (int i = 0; i < cycle.size(); i++) {
@@ -67,7 +73,7 @@ int main(int argc, char* argv[]) {
         }
         std::cout << std::endl;
     }
-    save_data(outputFileName);
+    save_data(outputFileName, DISCOVERED_CYCLES);
 
 
     return 0;

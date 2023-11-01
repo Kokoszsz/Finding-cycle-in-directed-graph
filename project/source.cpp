@@ -1,61 +1,66 @@
-#include <unordered_map>
 #include <fstream>
 #include <vector>
-#include <stack>
 #include <sstream>
 #include <iostream>
+#include <algorithm>
+#include <functional>
+#include <cctype>
 #include "source.h"
 
-std::unordered_map<int, std::vector<int>> MY_MAP;
-std::vector<std::vector<int>> DISCOVERED_CYCLES;
 
 
-std::unordered_map<int, std::vector<int>> adv_tokenizer(std::string s, std::string del, std::string del_2)
+// takes input data creates a map. every node is a key and its values are node that it leads to
+NodeMap create_map(const std::string conection_list)
 {
     std::string pair = "";
-    std::unordered_map<int, std::vector<int>> cur_map;
-    for (auto x : s) {
-        pair += x;
+    NodeMap cur_map;
+    for (auto x : conection_list) {
         if (x == ',') {
             std::string number = "";
             int from;
             int to;
-            bool not_divied = true;
-            for (auto y : pair) {
-                if (y != '-' and y != '>' and y != ' ')
-                    number += y;
-                else if (y == '>') {
+            for (auto character : pair) {
+                if (std::isdigit(character))
+                    number += character;
+                else if (!number.empty()) {
                     from = stoi(number);
                     number = "";
                 }
             }
-            to = stoi(number);
-            cur_map[from].push_back(to);
+            if (!number.empty()) {
+                to = stoi(number);
+                cur_map[from].push_back(to);
+            }
             pair = "";
         }
+        else
+            pair += x;
+
     }
     return cur_map;
 }
 
-void find_cycle(int start_node, int cur_node, std::vector<int> visited) {
+// finds cycles in a graph
+void find_cycle(const int start_node, const int cur_node, std::vector<int> visited, NodeMap& MY_MAP, DiscoveredCycles& DISCOVERED_CYCLES) {
     if (start_node == cur_node and visited.size() > 0) {
         visited.push_back(cur_node);
         DISCOVERED_CYCLES.push_back(visited);
         return;
     }
-    for (int visited_node : visited) {
+    for (const int visited_node : visited) {
         if (visited_node == cur_node) {
             return;
         }
     }
 
     visited.push_back(cur_node);
-    for (int neighbour_node : MY_MAP[cur_node]) {
-        find_cycle(start_node, neighbour_node, visited);
+    for (const int neighbour_node : MY_MAP[cur_node]) {
+        find_cycle(start_node, neighbour_node, visited, MY_MAP, DISCOVERED_CYCLES);
     }
 }
 
-std::string get_data(std::string filename) {
+// takes data from source file and puts into single string
+std::string get_data(const std::string filename) {
     std::ifstream file(filename);
 
     std::string fileContent = "";
@@ -63,7 +68,13 @@ std::string get_data(std::string filename) {
         std::string line;
 
         while (std::getline(file, line)) {
-            fileContent += line;
+            std::string result = "";
+            for (char c : line) {
+                if (!std::isspace(c)) {
+                    result += c;
+                }
+            }
+            fileContent += result;
         }
 
         file.close();
@@ -75,7 +86,8 @@ std::string get_data(std::string filename) {
     return fileContent;
 }
 
-void save_data(std::string outputFileName) {
+// writes all found cycle into output file. if there are no cycles "There are no cycles in the graph." message is written instead
+void save_data(const std::string outputFileName, const DiscoveredCycles& DISCOVERED_CYCLES) {
     std::ofstream outputFile(outputFileName);
 
     if (outputFile.is_open()) {
