@@ -1,8 +1,3 @@
-#include <fstream>
-#include <sstream>
-#include <algorithm>
-#include <functional>
-#include <cctype>
 #include "source.h"
 
 
