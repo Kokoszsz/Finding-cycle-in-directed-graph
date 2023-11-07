@@ -11,6 +11,10 @@ int main(int argc, char* argv[]) {
     NodeMap MY_MAP;
     DiscoveredCycles DISCOVERED_CYCLES;
 
+    if (argc == 1) {
+        std::cout << "Usage: " << argv[0] << " -g input_file -c output_file" << std::endl;
+        return 1;
+    }
 
     for (int i = 1; i < argc; i++) {
         if (std::string(argv[i]) == "-g") {
