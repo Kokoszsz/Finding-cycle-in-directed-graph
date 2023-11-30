@@ -2,7 +2,7 @@
 
 
 // main function
-int main(int argc, char* argv[]) {
+int main(int argc, const char* argv[]) {
 
 
     std::string inputFileName;
@@ -11,54 +11,32 @@ int main(int argc, char* argv[]) {
     NodeMap MY_MAP;
     DiscoveredCycles DISCOVERED_CYCLES;
 
-    if (argc == 1) {
-        std::cout << "Usage: " << argv[0] << " -g input_file -c output_file" << std::endl;
-        return 1;
+    if (!read_params(argc, argv, inputFileName, outputFileName))
+        exit(2);
+    if (inputFileName.empty()) {
+        std::cerr << "Error: No input file name provided" << std::endl;
+        exit(2);
+    }
+    if (outputFileName.empty()) {
+        std::cerr << "Error: No output file name provided" << std::endl;
+        exit(2);
     }
 
-    for (int i = 1; i < argc; i++) {
-        if (std::string(argv[i]) == "-g") {
-            if (i + 1 < argc) {
-                inputFileName = argv[i + 1];
-                i++;
-            }
-            else {
-                std::cerr << "Error: -g switch requires an input file name." << std::endl;
-                return 1;
-            }
-        }
-        else if (std::string(argv[i]) == "-c") {
-            if (i + 1 < argc) {
-                outputFileName = argv[i + 1];
-                i++;
-            }
-            else {
-                std::cerr << "Error: -c switch requires an output file name." << std::endl;
-                return 1;
-            }
-        }
-        else {
-            std::cout << "Usage: " << argv[0] << " -g input_file -c output_file" << std::endl;
-            return 1;
-        }
-    }
 
-    std::string edges;
-    edges = get_data(inputFileName);
-    edges += ',';
-    std::cout << edges << std::endl;
+    MY_MAP = get_data_and_create_map(inputFileName);
 
 
-    MY_MAP = create_map(edges);
+    //for (const auto& entry : MY_MAP) {
+        //int key = entry.first;
+        //const std::vector<int>& values = entry.second;
+        //std::cout << "Key: " << key << ", Values: ";
+        //for (int value : values) {
+            //std::cout << value << ' ';
+        //}
 
-
-    //for (const auto& entry : d) {
-    //    std::cout << "Node " << entry.first << " connects to: ";
-    //    for (int connected_node : entry.second) {
-    //        std::cout << connected_node << " ";
-    //    }
-    //    std::cout << std::endl;
+        //std::cout << std::endl;
     //}
+
 
 
     std::vector<int> visited;
