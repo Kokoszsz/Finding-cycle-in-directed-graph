@@ -18,6 +18,12 @@ jobs:
       run: |
         Set-Location -Path $env:GITHUB_WORKSPACE
 
+    - name: List files in current directory
+    run: Get-ChildItem -Path .\ -Force
+
+
     - name: Run Tests
       shell: powershell
-      run: .\run_tests.bat
+      run: |
+        Set-Location -Path .\
+        .\run_tests.bat
