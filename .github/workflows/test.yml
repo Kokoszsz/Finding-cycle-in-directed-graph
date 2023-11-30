@@ -19,7 +19,7 @@ jobs:
         Set-Location -Path $env:GITHUB_WORKSPACE
 
     - name: List files in current directory
-    run: Get-ChildItem -Path .\ -Force
+      run: Get-ChildItem -Path .\ -Force
 
 
     - name: Run Tests
