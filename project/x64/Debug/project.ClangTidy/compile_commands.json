@@ -1,0 +1,12 @@
+[
+  {
+    "directory": "C:\\Users\\kaczok\\Desktop\\FoCP code\\project\\project",
+    "command": "\"C:\\Windows\\system32\\CL.exe\" \/c \/nologo \/W3 \/WX- \/diagnostics:column \/Od \/D CODE_ANALYSIS \/D _DEBUG \/D _CONSOLE \/D _UNICODE \/D UNICODE \/EHsc \/RTC1 \/MDd \/GS \/fp:precise \/permissive- \/Fo\"x64\\Debug\\\\\" \/Gd \/TP   \"C:\\Users\\kaczok\\Desktop\\FoCP code\\project\\project\\project.cpp\"",
+    "file": "C:\\Users\\kaczok\\Desktop\\FoCP code\\project\\project\\project.cpp"
+  },
+  {
+    "directory": "C:\\Users\\kaczok\\Desktop\\FoCP code\\project\\project",
+    "command": "\"C:\\Windows\\system32\\CL.exe\" \/c \/nologo \/W3 \/WX- \/diagnostics:column \/Od \/D CODE_ANALYSIS \/D _DEBUG \/D _CONSOLE \/D _UNICODE \/D UNICODE \/EHsc \/RTC1 \/MDd \/GS \/fp:precise \/permissive- \/Fo\"x64\\Debug\\\\\" \/Gd \/TP   \"C:\\Users\\kaczok\\Desktop\\FoCP code\\project\\project\\source.cpp\"",
+    "file": "C:\\Users\\kaczok\\Desktop\\FoCP code\\project\\project\\source.cpp"
+  }
+]
