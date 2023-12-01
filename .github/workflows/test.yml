@@ -16,6 +16,7 @@ jobs:
     - name: Clear test_output_1.txt
       run: |
         cd $GITHUB_WORKSPACE
+        dir
         echo -n > $GITHUB_WORKSPACE/tests_project/test_output_1.txt
       
     - name: Print current working directory
