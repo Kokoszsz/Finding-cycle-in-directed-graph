@@ -7,7 +7,7 @@ on:
 
 jobs:
   test:
-    runs-on: windows-latest  # Use appropriate runner for your project
+    runs-on: ubuntu-latest  # Use appropriate runner for your project
 
     steps:
     - name: Checkout repository
@@ -18,8 +18,9 @@ jobs:
       run: |
         Set-Location -Path $env:GITHUB_WORKSPACE
 
-    - name: List files in current directory
-      run: Get-ChildItem -Path .\ -Force
+    - name: Give execute permissions to run_tests.sh
+      run: chmod +x run_tests.sh
+
 
 
     - name: Run Tests
