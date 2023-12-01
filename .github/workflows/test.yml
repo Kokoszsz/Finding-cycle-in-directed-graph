@@ -25,7 +25,7 @@ jobs:
         dir 
       
     - name: Clear test output file
-      run: echo. > tests_project\test_output_1.txt
+      run: Set-Content -Path tests_project\test_case_1\test_output_1.txt -Value $null
 
     - name: Print current working directory
       run: |
@@ -33,6 +33,6 @@ jobs:
         
     - name: Run Tests
       run: |
-        .\run_tests.bat
+        .\tests_project\run_tests.bat
         
     

@@ -2,9 +2,9 @@
 cls
 
 REM Define input and output file names
-set input_file=tests_project\test_data_1.txt
-set output_file=tests_project\test_output_1.txt
-set expected_output_file=tests_project\test_expected_output_1.txt
+set input_file=tests_project\test_case_1\test_data_1.txt
+set output_file=tests_project\test_case_1\test_output_1.txt
+set expected_output_file=tests_project\test_case_1\test_expected_output_1.txt
 
 REM Run your program with command-line arguments
 x64\Debug\project.exe -g %input_file% -c %output_file%
