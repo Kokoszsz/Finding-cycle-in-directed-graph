@@ -14,17 +14,9 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Set up environment
-      shell: powershell
       run: |
-        Set-Location -Path $env:GITHUB_WORKSPACE
-
-    - name: Give execute permissions to run_tests.sh
-      run: chmod +x run_tests.sh
-
-
+        cd $GITHUB_WORKSPACE
+        chmod +x run_tests.sh
 
     - name: Run Tests
-      shell: powershell
-      run: |
-        Set-Location -Path .\
-        .\run_tests.bat
+      run: ./run_tests.sh
