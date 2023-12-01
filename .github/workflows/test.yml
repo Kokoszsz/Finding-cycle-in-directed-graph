@@ -12,11 +12,21 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-
+    
     - name: Set up environment
       run: |
         cd $GITHUB_WORKSPACE
         chmod +x run_tests.sh
+        
+    - name: Print current working directory
+      run: |
+        pwd
+        ls
+        
+    - name: Print contents of /x64/Debug directory
+      run: |
+        cd $GITHUB_WORKSPACE/x64/Debug
+        ls
 
     - name: Run Tests
       run: ./run_tests.sh
