@@ -13,11 +13,8 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
       
-    - name: Print current working directory
-      run: |
-        dir
-      
     - name: Clear test_output_1.txt
+      cd $GITHUB_WORKSPACE
       run: echo -n > $GITHUB_WORKSPACE/tests_project/test_output_1.txt
       
     - name: Print current working directory
