@@ -7,7 +7,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest  # Use appropriate runner for your project
+    runs-on: windows-latest
 
     steps:
     - name: Checkout repository
@@ -16,18 +16,18 @@ jobs:
     - name: Clear test_output_1.txt
       run: echo -n > $GITHUB_WORKSPACE/tests_project/test_output_1.txt
       
-    - name: Set execute permissions for project.exe
-      run: chmod +x $GITHUB_WORKSPACE/x64/Debug/project.exe
-    
-    - name: Set up environment
-      run: |
-        cd $GITHUB_WORKSPACE
-        chmod +x run_tests.sh
-        
     - name: Print current working directory
       run: |
-        pwd
-        ls
+        dir
+    
+    - name: Build project
+      run: |
+        cd $GITHUB_WORKSPACE
+        msbuild /p:Configuration=Debug /p:Platform=x64 project.sln
+
+    - name: Print current working directory
+      run: |
+        dir
 
     - name: Run Tests
-      run: ./run_tests.sh
+      run: .\tests_project\run_tests.bat
