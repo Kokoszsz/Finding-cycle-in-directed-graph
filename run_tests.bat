@@ -16,7 +16,7 @@ if errorlevel 1 (
     pause
     exit 1
 ) else (
-    echo Tests passed.
+    echo Tests padsadsadassed.
     pause
     exit 0
 )
