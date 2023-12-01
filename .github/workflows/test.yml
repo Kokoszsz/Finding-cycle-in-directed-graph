@@ -32,7 +32,6 @@ jobs:
         dir 
         
     - name: Run Tests
-      shell: cmd
       run: |
         .\tests_project\run_tests.bat
         
