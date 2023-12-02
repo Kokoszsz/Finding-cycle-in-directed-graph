@@ -13,7 +13,7 @@ bool read_params(int count, const char* params[], std::string& input_file, std::
 
     for (int i = 1; i < count - 1; i += 2) {
         if (std::string(params[i]) == "-g") {
-            if (i + 1 < count) {
+            if (i + 1 < count) {            
                 input_file = params[i + 1];
                 has_g = true;
             }
@@ -76,6 +76,9 @@ NodeMap get_data_and_create_map(const std::string& filename)
                     cur_map[stoi(from_node)].push_back(stoi(to_node));
                     from_node = "";
                     to_node = "";
+                    if (std::isdigit(c)) {
+                        from_node += c;
+                    }
                 }
 
             }
