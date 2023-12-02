@@ -14,6 +14,10 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
       
+    - name: Print current working directory
+      run: |
+        dir 
+      
     - name: Change the working directory to the project folder
       run: |
         cd project
