@@ -19,17 +19,11 @@ jobs:
       
     - name: Build project
       run: |
-        dir 
         cd project
-        dir 
         msbuild /p:Configuration=Debug /m /p:Platform=x64
-      
-    - name: Print current working directory
-      run: |
-        dir 
         
     - name: Run Tests
       run: |
-        .\tests_project\run_tests.bat
+        .project\tests_project\run_tests.bat
         
     
