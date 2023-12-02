@@ -13,24 +13,16 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-      
-    - name: Print current working directory
-      run: |
-        dir 
-      
-    - name: Change the working directory to the project folder
-      run: |
-        cd project
-        
-    - name: Print current working directory
-      run: |
-        dir 
 
     - name: Set up MSBuild
       uses: microsoft/setup-msbuild@v1
       
     - name: Build project
-      run: msbuild /p:Configuration=Debug /m /p:Platform=x64
+      run: 
+        dir 
+        cd project
+        dir 
+        msbuild /p:Configuration=Debug /m /p:Platform=x64
       
     - name: Print current working directory
       run: |
