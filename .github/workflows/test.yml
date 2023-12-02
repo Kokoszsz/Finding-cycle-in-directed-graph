@@ -18,7 +18,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1
       
     - name: Build project
-      run: 
+      run: |
         dir 
         cd project
         dir 
