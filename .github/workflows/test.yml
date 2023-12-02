@@ -23,13 +23,6 @@ jobs:
     - name: Print current working directory
       run: |
         dir 
-      
-    - name: Clear test output file
-      run: Set-Content -Path tests_project\test_case_1\test_output_1.txt -Value $null
-
-    - name: Print current working directory
-      run: |
-        dir 
         
     - name: Run Tests
       run: |
