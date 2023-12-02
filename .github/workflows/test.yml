@@ -13,6 +13,10 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+      
+    - name: Change the working directory to the project folder
+      run: |
+        cd project
 
     - name: Set up MSBuild
       uses: microsoft/setup-msbuild@v1
