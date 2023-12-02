@@ -1,38 +1,27 @@
 @echo off
 cls
 
+setlocal enabledelayedexpansion
 
-set input_file=tests_project\test_case_1\test_data.txt
-set output_file=tests_project\test_case_1\test_output.txt
-set expected_output_file=tests_project\test_case_1\test_expected_output.txt
+for /l %%i in (1,1,3) do (
+    set input_file=tests_project\test_case_%%i\test_data.txt
+    set output_file=tests_project\test_case_%%i\test_output.txt
+    set expected_output_file=tests_project\test_case_%%i\test_expected_output.txt
 
-x64\Debug\project.exe -g %input_file% -c %output_file%
+    x64\Debug\project.exe -g !input_file! -c !output_file!
 
-echo Test 1 failed.
+    echo Test %%i failed.
 
-set input_file=tests_project\test_case_2\test_data.txt
-set output_file=tests_project\test_case_2\test_output.txt
-set expected_output_file=tests_project\test_case_2\test_expected_output.txt
-
-x64\Debug\project.exe -g %input_file% -c %output_file%
-
-echo Test 2 failed.
-
-set input_file=tests_project\test_case_3\test_data.txt
-set output_file=tests_project\test_case_3\test_output.txt
-set expected_output_file=tests_project\test_case_3\test_expected_output.txt
-
-x64\Debug\project.exe -g %input_file% -c %output_file%
-
-echo Test 3 failed.
-
-fc %output_file% %expected_output_file% > nul
-if errorlevel 1 (
-    echo Tests failed.
-    pause
-    exit 1
-) else (
-    echo Tests passed.
-    pause
-    exit 0
+    fc !output_file! !expected_output_file! > nul
+    if errorlevel 1 (
+        echo Tests failed.
+        pause
+        exit 1
+    ) else (
+        echo Test %%i passed.
+    )
 )
+
+echo All tests passed.
+pause
+exit 0
