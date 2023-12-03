@@ -17,7 +17,7 @@ for /l %%i in (1,1,9) do (
 
     fc !output_file! !expected_output_file! > nul
     if errorlevel 1 (
-        echo Tests failed.
+        echo Test %%i failed.
         pause
         exit 1
     ) else (
