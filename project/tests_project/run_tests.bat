@@ -3,6 +3,7 @@ cls
 
 setlocal enabledelayedexpansion
 echo Current directory: %cd%
+dir
 for /l %%i in (1,1,8) do (
 
 	
