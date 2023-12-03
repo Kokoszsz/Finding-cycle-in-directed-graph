@@ -4,7 +4,7 @@ cls
 setlocal enabledelayedexpansion
 echo Current directory: %cd%
 dir
-for /l %%i in (1,1,8) do (
+for /l %%i in (1,1,9) do (
 
     set input_file=project\tests_project\test_case_%%i\test_data.txt
     set expected_output_file=project\tests_project\test_case_%%i\test_expected_output.txt
