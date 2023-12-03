@@ -6,12 +6,11 @@ echo Current directory: %cd%
 dir
 for /l %%i in (1,1,8) do (
 
-	echo test_case_%%i
     set input_file=project\tests_project\test_case_%%i\test_data.txt
-	echo input_file
     set expected_output_file=project\tests_project\test_case_%%i\test_expected_output.txt
 
-	type nul > tests_project\test_case_%%i\test_output.txt
+	type nul > project\tests_project\test_case_%%i\test_output.txt
+	set output_file=project\tests_project\test_case_%%i\test_output.txt
 
     x64\Debug\project.exe -g !input_file! -c !output_file!
 
