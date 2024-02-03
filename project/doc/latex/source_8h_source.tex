@@ -1,0 +1,35 @@
+\doxysection{source.\+h}
+\hypertarget{source_8h_source}{}\label{source_8h_source}\index{project/source.h@{project/source.h}}
+\mbox{\hyperlink{source_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SOURCE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SOURCE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ \#include\ <algorithm>}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ \#include\ <functional>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{using\ }\mbox{\hyperlink{source_8h_a8697970ab0f646fceba4a660535f0fe4}{NodeMap}}\ =\ std::unordered\_map<int,\ std::vector<int>>;}
+\DoxyCodeLine{00014\ \textcolor{keyword}{using\ }\mbox{\hyperlink{source_8h_a1df97ce89c7b863e5af3e6c90bd7294f}{DiscoveredCycles}}\ =\ std::vector<std::vector<int>>;}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00028\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{source_8h_a3c126a06e7ea49daef6d47bcfb147eb7}{read\_params}}(\textcolor{keywordtype}{int}\ count,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ params[],\ std::string\&\ input\_file,\ std::string\&\ output\_file);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00042\ \mbox{\hyperlink{source_8h_a8697970ab0f646fceba4a660535f0fe4}{NodeMap}}\ \mbox{\hyperlink{source_8h_a022917adaeae0553518a9d6c7bcd76d6}{get\_data\_and\_create\_map}}(\textcolor{keyword}{const}\ std::string\&\ filenamet);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00051\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{source_8h_a52babb1d804e3954bd0fae6bfd76cb49}{DFS\_on\_every\_node}}(\mbox{\hyperlink{source_8h_a8697970ab0f646fceba4a660535f0fe4}{NodeMap}}\&\ MY\_MAP,\ \mbox{\hyperlink{source_8h_a1df97ce89c7b863e5af3e6c90bd7294f}{DiscoveredCycles}}\&\ DISCOVERED\_CYCLES);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00063\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{source_8h_a476563d98c9a46ea60938fe77ccc2a34}{DFS}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ start\_node,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ cur\_node,\ std::vector<int>\ visited,\ \mbox{\hyperlink{source_8h_a8697970ab0f646fceba4a660535f0fe4}{NodeMap}}\&\ MY\_MAP,\ \mbox{\hyperlink{source_8h_a1df97ce89c7b863e5af3e6c90bd7294f}{DiscoveredCycles}}\&\ DISCOVERED\_CYCLES);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00072\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{source_8h_a48d4abce91e001ca28aa5c4b1b97c03e}{save\_data}}(std::string\ outputFileName,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{source_8h_a1df97ce89c7b863e5af3e6c90bd7294f}{DiscoveredCycles}}\&\ DISCOVERED\_CYCLES);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00079\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{source_8h_a92aaab9bcc422427d73a48dbfa0e1b1d}{print\_cycles}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{source_8h_a1df97ce89c7b863e5af3e6c90bd7294f}{DiscoveredCycles}}\&\ DISCOVERED\_CYCLES);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -3,33 +3,27 @@ name: Run Tests
 on:
   push:
     branches:
+      - test1
       - master
 
 jobs:
   test:
-    runs-on: windows-latest
+    runs-on: windows-latest  # Use appropriate runner for your project
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+
+    - name: Set up MSBuild
+      uses: microsoft/setup-msbuild@v1
       
-    - name: Clear test_output_1.txt
-      working-directory: $GITHUB_WORKSPACE/tests_project
-      run: |
-        echo -n > $GITHUB_WORKSPACE/tests_project/test_output_1.txt
-      
-    - name: Print current working directory
-      run: |
-        dir
-    
     - name: Build project
       run: |
-        cd $GITHUB_WORKSPACE
-        msbuild /p:Configuration=Debug /p:Platform=x64 project.sln
-
-    - name: Print current working directory
-      run: |
-        dir
-
+        cd project
+        msbuild /p:Configuration=Debug /m /p:Platform=x64
+        
     - name: Run Tests
-      run: .\tests_project\run_tests.bat
+      run: |
+        project\tests_project\run_tests.bat
+        
+    
