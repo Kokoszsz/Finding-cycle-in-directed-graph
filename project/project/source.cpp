@@ -1,6 +1,5 @@
 #include "source.h"
 
-
 bool read_params(int count, const char* params[], std::string& input_file, std::string& output_file)
 {
     if (count != 5) {
@@ -33,8 +32,6 @@ bool read_params(int count, const char* params[], std::string& input_file, std::
 
     return true;
 }
-
-
 
 NodeMap get_data_and_create_map(const std::string& filename)
 {
@@ -73,7 +70,10 @@ NodeMap get_data_and_create_map(const std::string& filename)
                 else {
                     arrow = false;
                     comma = false;
-                    cur_map[stoi(from_node)].push_back(stoi(to_node));
+                    // Check if to_node is already in cur_map[from_node]
+                    if (std::find(cur_map[stoi(from_node)].begin(), cur_map[stoi(from_node)].end(), stoi(to_node)) == cur_map[stoi(from_node)].end()) {
+                        cur_map[stoi(from_node)].push_back(stoi(to_node));
+                    }
                     from_node = "";
                     to_node = "";
                     if (std::isdigit(c)) {
@@ -84,7 +84,10 @@ NodeMap get_data_and_create_map(const std::string& filename)
             }
         }
         if (!from_node.empty() and !to_node.empty()) {
-            cur_map[stoi(from_node)].push_back(stoi(to_node));
+            // Check if to_node is already in cur_map[from_node]
+            if (std::find(cur_map[stoi(from_node)].begin(), cur_map[stoi(from_node)].end(), stoi(to_node)) == cur_map[stoi(from_node)].end()) {
+                cur_map[stoi(from_node)].push_back(stoi(to_node));
+            }
         }
 
         file.close();
@@ -97,8 +100,16 @@ NodeMap get_data_and_create_map(const std::string& filename)
     return cur_map;
 }
 
+void DFS_on_every_node(NodeMap& MY_MAP, DiscoveredCycles& DISCOVERED_CYCLES) {
+    std::vector<int> visited;
+    for (const auto& entry : MY_MAP) {
+        DFS(entry.first, entry.first, visited, MY_MAP, DISCOVERED_CYCLES);
+        std::vector<int> nth;
+        MY_MAP[entry.first] = nth;
+    }
+}
 
-void find_cycle(const int start_node, const int cur_node, std::vector<int> visited, NodeMap& MY_MAP, DiscoveredCycles& DISCOVERED_CYCLES) {
+void DFS(const int start_node, const int cur_node, std::vector<int> visited, NodeMap& MY_MAP, DiscoveredCycles& DISCOVERED_CYCLES) {
     if (start_node == cur_node and visited.size() > 0) {
         visited.push_back(cur_node);
         DISCOVERED_CYCLES.push_back(visited);
@@ -112,10 +123,9 @@ void find_cycle(const int start_node, const int cur_node, std::vector<int> visit
 
     visited.push_back(cur_node);
     for (const int neighbour_node : MY_MAP[cur_node]) {
-        find_cycle(start_node, neighbour_node, visited, MY_MAP, DISCOVERED_CYCLES);
+        DFS(start_node, neighbour_node, visited, MY_MAP, DISCOVERED_CYCLES);
     }
 }
-
 
 void save_data(const std::string outputFileName, const DiscoveredCycles& DISCOVERED_CYCLES) {
     std::ofstream outputFile(outputFileName);
@@ -140,5 +150,17 @@ void save_data(const std::string outputFileName, const DiscoveredCycles& DISCOVE
     else {
         std::cerr << "Error opening the output file." << std::endl;
         exit(2);
+    }
+}
+
+void print_cycles(const DiscoveredCycles& DISCOVERED_CYCLES) {
+    for (std::vector<int> cycle : DISCOVERED_CYCLES) {
+        for (int i = 0; i < cycle.size(); i++) {
+            std::cout << cycle[i];
+            if (i < cycle.size() - 1) {
+                std::cout << " -> ";
+            }
+        }
+        std::cout << std::endl;
     }
 }

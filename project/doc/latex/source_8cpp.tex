@@ -1,0 +1,123 @@
+\doxysection{project/source.cpp File Reference}
+\hypertarget{source_8cpp}{}\label{source_8cpp}\index{project/source.cpp@{project/source.cpp}}
+{\ttfamily \#include "{}source.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{source_8cpp_a3c126a06e7ea49daef6d47bcfb147eb7}{read\+\_\+params}} (int count, const char \texorpdfstring{$\ast$}{*}params\mbox{[}$\,$\mbox{]}, std\+::string \&input\+\_\+file, std\+::string \&output\+\_\+file)
+\item 
+\mbox{\hyperlink{source_8h_a8697970ab0f646fceba4a660535f0fe4}{Node\+Map}} \mbox{\hyperlink{source_8cpp_a3611301d4d30f9f2d774bdb7b7e04468}{get\+\_\+data\+\_\+and\+\_\+create\+\_\+map}} (const std\+::string \&filename)
+\item 
+void \mbox{\hyperlink{source_8cpp_a52babb1d804e3954bd0fae6bfd76cb49}{DFS\+\_\+on\+\_\+every\+\_\+node}} (\mbox{\hyperlink{source_8h_a8697970ab0f646fceba4a660535f0fe4}{Node\+Map}} \&MY\+\_\+\+MAP, \mbox{\hyperlink{source_8h_a1df97ce89c7b863e5af3e6c90bd7294f}{Discovered\+Cycles}} \&DISCOVERED\+\_\+\+CYCLES)
+\item 
+void \mbox{\hyperlink{source_8cpp_a476563d98c9a46ea60938fe77ccc2a34}{DFS}} (const int start\+\_\+node, const int cur\+\_\+node, std\+::vector$<$ int $>$ visited, \mbox{\hyperlink{source_8h_a8697970ab0f646fceba4a660535f0fe4}{Node\+Map}} \&MY\+\_\+\+MAP, \mbox{\hyperlink{source_8h_a1df97ce89c7b863e5af3e6c90bd7294f}{Discovered\+Cycles}} \&DISCOVERED\+\_\+\+CYCLES)
+\item 
+void \mbox{\hyperlink{source_8cpp_a0c808017214f87e56b7f8bc7e90a6725}{save\+\_\+data}} (const std\+::string output\+File\+Name, const \mbox{\hyperlink{source_8h_a1df97ce89c7b863e5af3e6c90bd7294f}{Discovered\+Cycles}} \&DISCOVERED\+\_\+\+CYCLES)
+\item 
+void \mbox{\hyperlink{source_8cpp_a92aaab9bcc422427d73a48dbfa0e1b1d}{print\+\_\+cycles}} (const \mbox{\hyperlink{source_8h_a1df97ce89c7b863e5af3e6c90bd7294f}{Discovered\+Cycles}} \&DISCOVERED\+\_\+\+CYCLES)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{source_8cpp_a476563d98c9a46ea60938fe77ccc2a34}\label{source_8cpp_a476563d98c9a46ea60938fe77ccc2a34} 
+\index{source.cpp@{source.cpp}!DFS@{DFS}}
+\index{DFS@{DFS}!source.cpp@{source.cpp}}
+\doxysubsubsection{\texorpdfstring{DFS()}{DFS()}}
+{\footnotesize\ttfamily void DFS (\begin{DoxyParamCaption}\item[{const int}]{start\+\_\+node,  }\item[{const int}]{cur\+\_\+node,  }\item[{std\+::vector$<$ int $>$}]{visited,  }\item[{\mbox{\hyperlink{source_8h_a8697970ab0f646fceba4a660535f0fe4}{Node\+Map}} \&}]{MY\+\_\+\+MAP,  }\item[{\mbox{\hyperlink{source_8h_a1df97ce89c7b863e5af3e6c90bd7294f}{Discovered\+Cycles}} \&}]{DISCOVERED\+\_\+\+CYCLES }\end{DoxyParamCaption})}
+
+This function performs a depth-\/first search (DFS) to find cycles in a graph starting from a specified node. It populates the discovered cycles in the DISCOVERED\+\_\+\+CYCLES vector.
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\+\_\+node} & The node from which the search for cycles begins. \\
+\hline
+{\em cur\+\_\+node} & The current node being explored during the search. \\
+\hline
+{\em visited} & A vector representing the nodes visited during the current exploration. \\
+\hline
+{\em MY\+\_\+\+MAP} & The graph represented as a Node\+Map (adjacency list). \\
+\hline
+{\em DISCOVERED\+\_\+\+CYCLES} & Reference to a vector of vectors where discovered cycles are stored. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{source_8cpp_a52babb1d804e3954bd0fae6bfd76cb49}\label{source_8cpp_a52babb1d804e3954bd0fae6bfd76cb49} 
+\index{source.cpp@{source.cpp}!DFS\_on\_every\_node@{DFS\_on\_every\_node}}
+\index{DFS\_on\_every\_node@{DFS\_on\_every\_node}!source.cpp@{source.cpp}}
+\doxysubsubsection{\texorpdfstring{DFS\_on\_every\_node()}{DFS\_on\_every\_node()}}
+{\footnotesize\ttfamily void DFS\+\_\+on\+\_\+every\+\_\+node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{source_8h_a8697970ab0f646fceba4a660535f0fe4}{Node\+Map}} \&}]{MY\+\_\+\+MAP,  }\item[{\mbox{\hyperlink{source_8h_a1df97ce89c7b863e5af3e6c90bd7294f}{Discovered\+Cycles}} \&}]{DISCOVERED\+\_\+\+CYCLES }\end{DoxyParamCaption})}
+
+This function performs a depth-\/first search (DFS) on every node in the graph and stores the discovered cycles in the DISCOVERED\+\_\+\+CYCLES vector.
+
+
+\begin{DoxyParams}{Parameters}
+{\em MY\+\_\+\+MAP} & The graph represented as a Node\+Map (adjacency list). \\
+\hline
+{\em DISCOVERED\+\_\+\+CYCLES} & Reference to a vector of vectors where discovered cycles are stored. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{source_8cpp_a3611301d4d30f9f2d774bdb7b7e04468}\label{source_8cpp_a3611301d4d30f9f2d774bdb7b7e04468} 
+\index{source.cpp@{source.cpp}!get\_data\_and\_create\_map@{get\_data\_and\_create\_map}}
+\index{get\_data\_and\_create\_map@{get\_data\_and\_create\_map}!source.cpp@{source.cpp}}
+\doxysubsubsection{\texorpdfstring{get\_data\_and\_create\_map()}{get\_data\_and\_create\_map()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{source_8h_a8697970ab0f646fceba4a660535f0fe4}{Node\+Map}} get\+\_\+data\+\_\+and\+\_\+create\+\_\+map (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filenamet }\end{DoxyParamCaption})}
+
+This function reads data from the specified file and creates a Node\+Map, where each node is associated with a list of connected nodes. The file is expected to contain lines representing edges in the format "{}from\+\_\+node -\/ to\+\_\+node"{}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The name of the file containing edge information.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a Node\+Map representing the connectivity information read from the file. The Node\+Map is a std\+::unordered\+\_\+map$<$int, std\+::vector$<$int$>$$>$, where each key-\/value pair represents a node and its connected nodes. 
+\end{DoxyReturn}
+\Hypertarget{source_8cpp_a92aaab9bcc422427d73a48dbfa0e1b1d}\label{source_8cpp_a92aaab9bcc422427d73a48dbfa0e1b1d} 
+\index{source.cpp@{source.cpp}!print\_cycles@{print\_cycles}}
+\index{print\_cycles@{print\_cycles}!source.cpp@{source.cpp}}
+\doxysubsubsection{\texorpdfstring{print\_cycles()}{print\_cycles()}}
+{\footnotesize\ttfamily void print\+\_\+cycles (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{source_8h_a1df97ce89c7b863e5af3e6c90bd7294f}{Discovered\+Cycles}} \&}]{DISCOVERED\+\_\+\+CYCLES }\end{DoxyParamCaption})}
+
+This function prints the discovered cycles in the graph.
+
+
+\begin{DoxyParams}{Parameters}
+{\em DISCOVERED\+\_\+\+CYCLES} & Reference to a vector of vectors containing the discovered cycles. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{source_8cpp_a3c126a06e7ea49daef6d47bcfb147eb7}\label{source_8cpp_a3c126a06e7ea49daef6d47bcfb147eb7} 
+\index{source.cpp@{source.cpp}!read\_params@{read\_params}}
+\index{read\_params@{read\_params}!source.cpp@{source.cpp}}
+\doxysubsubsection{\texorpdfstring{read\_params()}{read\_params()}}
+{\footnotesize\ttfamily bool read\+\_\+params (\begin{DoxyParamCaption}\item[{int}]{count,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{params\mbox{[}$\,$\mbox{]},  }\item[{std\+::string \&}]{input\+\_\+file,  }\item[{std\+::string \&}]{output\+\_\+file }\end{DoxyParamCaption})}
+
+This function parses command-\/line parameters to extract the input and output file paths. It expects the parameters to be in the form of "{}-\/g input\+\_\+file -\/c output\+\_\+file"{}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em count} & The number of command-\/line parameters. \\
+\hline
+{\em params} & An array of C-\/style strings representing command-\/line parameters. \\
+\hline
+{\em input\+\_\+file} & Reference to a std\+::string where the input file path will be stored. \\
+\hline
+{\em output\+\_\+file} & Reference to a std\+::string where the output file path will be stored.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if the input and output file paths were successfully extracted, false otherwise. In case of failure, an error message is printed to std\+::cout. 
+\end{DoxyReturn}
+\Hypertarget{source_8cpp_a0c808017214f87e56b7f8bc7e90a6725}\label{source_8cpp_a0c808017214f87e56b7f8bc7e90a6725} 
+\index{source.cpp@{source.cpp}!save\_data@{save\_data}}
+\index{save\_data@{save\_data}!source.cpp@{source.cpp}}
+\doxysubsubsection{\texorpdfstring{save\_data()}{save\_data()}}
+{\footnotesize\ttfamily void save\+\_\+data (\begin{DoxyParamCaption}\item[{std\+::string}]{output\+File\+Name,  }\item[{const \mbox{\hyperlink{source_8h_a1df97ce89c7b863e5af3e6c90bd7294f}{Discovered\+Cycles}} \&}]{DISCOVERED\+\_\+\+CYCLES }\end{DoxyParamCaption})}
+
+This function takes a vector of discovered cycles and writes them to an output file. Each cycle is represented as a space-\/separated sequence of node IDs.
+
+
+\begin{DoxyParams}{Parameters}
+{\em output\+File\+Name} & The name of the output file where cycles will be saved. \\
+\hline
+{\em DISCOVERED\+\_\+\+CYCLES} & Reference to a vector of vectors containing discovered cycles. \\
+\hline
+\end{DoxyParams}

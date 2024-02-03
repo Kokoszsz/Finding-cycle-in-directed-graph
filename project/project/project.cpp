@@ -1,7 +1,13 @@
 ﻿#include "source.h"
 
 
-// main function
+/** Main function, starting point for program execution
+
+@param argc number of parameters when starting the program
+@param argv an array of pointers to char arrays used when running the program
+
+@return if the program executed successfully, 0 is returned
+*/
 int main(int argc, const char* argv[]) {
 
 
@@ -13,48 +19,14 @@ int main(int argc, const char* argv[]) {
 
     if (!read_params(argc, argv, inputFileName, outputFileName))
         exit(2);
-    if (inputFileName.empty()) {
-        std::cerr << "Error: No input file name provided" << std::endl;
-        exit(2);
-    }
-    if (outputFileName.empty()) {
-        std::cerr << "Error: No output file name provided" << std::endl;
-        exit(2);
-    }
 
 
     MY_MAP = get_data_and_create_map(inputFileName);
 
 
-    //for (const auto& entry : MY_MAP) {
-        //int key = entry.first;
-        //const std::vector<int>& values = entry.second;
-        //std::cout << "Key: " << key << ", Values: ";
-        //for (int value : values) {
-            //std::cout << value << ' ';
-        //}
-
-        //std::cout << std::endl;
-    //}
-
-
-
-    std::vector<int> visited;
-    for (const auto& entry : MY_MAP) {
-        find_cycle(entry.first, entry.first, visited, MY_MAP, DISCOVERED_CYCLES);
-        std::vector<int> nth;
-        MY_MAP[entry.first] = nth;
-    }
-
-    for (std::vector<int> cycle : DISCOVERED_CYCLES) {
-        for (int i = 0; i < cycle.size(); i++) {
-            std::cout << cycle[i];
-            if (i < cycle.size() - 1) {
-                std::cout << " -> ";
-            }
-        }
-        std::cout << std::endl;
-    }
+    DFS_on_every_node(MY_MAP, DISCOVERED_CYCLES);
+  
+    print_cycles(DISCOVERED_CYCLES);
     save_data(outputFileName, DISCOVERED_CYCLES);
 
 
